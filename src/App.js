@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
+import Home from './modules/Home';
+import Webassembly from './modules/wasm/Webassembly';
+import Virtualize from './modules/virtualize/router';
+import Memo from './modules/memo/Memo';
+import Webworkers from './modules/webworkers/Webworkers';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/memo">
+        <Memo />
+      </Route>
+      <Route path="/virtualize">
+        <Virtualize />
+      </Route>
+      <Route exact path="/wasm">
+        <Webassembly />
+      </Route>
+      <Route exact path="/webworkers">
+        <Webworkers />
+      </Route>
+
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
   );
-}
+};
 
 export default App;
